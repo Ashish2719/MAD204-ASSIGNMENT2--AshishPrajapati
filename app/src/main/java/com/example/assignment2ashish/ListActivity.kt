@@ -33,6 +33,9 @@ class ListActivity : AppCompatActivity() {
     private lateinit var adapter: CountryAdapter
     private lateinit var tvEmpty: TextView
 
+    /**
+     * Initializes the RecyclerView and attaches the Swipe helper.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
@@ -52,6 +55,9 @@ class ListActivity : AppCompatActivity() {
             Toast.makeText(this, "Sorted A-Z", Toast.LENGTH_SHORT).show()
         }
 
+        // --- BONUS FEATURE: Swipe to Delete ---
+        // This callback handles the swipe gesture (Left/Right) to remove items.
+        // It also implements an "Undo" Snackbar to restore deleted items.
         val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
             override fun onMove(rv: RecyclerView, v: RecyclerView.ViewHolder, t: RecyclerView.ViewHolder): Boolean {
                 return false // We don't support drag-and-drop moving, only swiping
