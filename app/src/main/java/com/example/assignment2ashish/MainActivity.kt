@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
 
+            // Check if email is empty or invalid format
             if (email.isEmpty() || !email.contains("@")) {
                 etEmail.error = "Please enter a valid email with '@'"
                 return@setOnClickListener
@@ -53,14 +54,17 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // Retrieve stored user credentials from SharedPreferences for verification
             val storedEmail = sharedPref.getString("email", "")
             val storedPass = sharedPref.getString("password", "")
 
 
             if (email == storedEmail && password == storedPass) {
 
+                // Save "isLoggedIn" state to true so the user skips login next time
                 sharedPref.edit().putBoolean("isLoggedIn", true).apply()
 
+                // Navigate to Dashboard and close Login screen
                 startActivity(Intent(this, DashboardActivity::class.java))
                 finish()
             } else {
