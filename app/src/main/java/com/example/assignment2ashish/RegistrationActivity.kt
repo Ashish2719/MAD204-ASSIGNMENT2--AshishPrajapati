@@ -16,10 +16,14 @@ import androidx.appcompat.app.AppCompatActivity
 
 class RegistrationActivity : AppCompatActivity() {
 
+    /**
+     * Sets up the registration form and handles the "Register" button click.
+     * Validates that Age > 0 and all fields are filled.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
-
+//Declare all the variables
         val etName = findViewById<EditText>(R.id.etRegName)
         val etEmail = findViewById<EditText>(R.id.etRegEmail)
         val etPass = findViewById<EditText>(R.id.etRegPassword)
@@ -34,7 +38,7 @@ class RegistrationActivity : AppCompatActivity() {
             val ageStr = etAge.text.toString()
             val program = etProgram.text.toString()
 
-
+// Validation: Ensure no fields are left blank
             if (name.isEmpty() || email.isEmpty() || pass.isEmpty() || ageStr.isEmpty() || program.isEmpty()) {
                 Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -43,7 +47,7 @@ class RegistrationActivity : AppCompatActivity() {
 
             val age = ageStr.toIntOrNull() ?: 0
             if (age <= 0) {
-                etAge.error = "Age must be greater than 0"
+                etAge.error = "Age must be greater than 0"   // Validation: Age must be a positive number
                 return@setOnClickListener
             }
 
