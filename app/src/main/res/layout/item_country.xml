@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Course: MAD204
+    Student Name: Ashishkumar Prajapati
+    Student ID: A00194842
+    Description: Defines appearance of a single row in the list.
+-->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvCountryName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:textSize="18sp"
+    android:text="Country Name"
+    android:background="?android:attr/selectableItemBackground"/>
