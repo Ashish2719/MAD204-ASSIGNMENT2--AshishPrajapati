@@ -40,4 +40,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSettingsHeader"
         app:layout_constraintVertical_bias="0.091" />
 
+    <!-- NEW FEATURE: Notifications Switch -->
+    <Switch
+        android:id="@+id/switchNotifications"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:minHeight="48dp"
+        android:text="Enable Notifications"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/switchDarkMode" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
