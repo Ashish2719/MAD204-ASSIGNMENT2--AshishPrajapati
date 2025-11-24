@@ -10,6 +10,7 @@ package com.example.assignment2ashish
 import android.content.Context
 import android.os.Bundle
 import android.widget.Switch
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 
@@ -20,6 +21,7 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
 
         val switchDarkMode = findViewById<Switch>(R.id.switchDarkMode)
+        val switchNotifications = findViewById<Switch>(R.id.switchNotifications) // New Reference
         val sharedPref = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
 
 
@@ -36,6 +38,13 @@ class SettingsActivity : AppCompatActivity() {
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
+        }
+
+        switchNotifications.setOnCheckedChangeListener { _, isChecked ->
+            sharedPref.edit().putBoolean("notifications", isChecked).apply()
+
+            val message = if (isChecked) "Notifications Enabled" else "Notifications Disabled"
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
     }
 }
